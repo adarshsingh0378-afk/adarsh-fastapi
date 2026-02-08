@@ -5,6 +5,16 @@ import psycopg2
 from psycopg2.extras import RealDictCursor 
 import time
 from .config import settings
+import os
+from sqlalchemy import create_engine
+
+# Purani localhost wali line ko comment karein ya hata dein
+# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@localhost/db" 
+
+# Nayi line jo Render se URL uthayegi:
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 # 1. Connection URL
 # Fixed codegit push origin main
